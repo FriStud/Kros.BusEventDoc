@@ -1,0 +1,43 @@
+﻿<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>%(DocumentTitle)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/doc-ui.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+
+    %(HeadContent)
+</head>
+
+<body>
+    <div id="eventbusdoc-ui"></div>
+    <script>
+        if (window.navigator.userAgent.indexOf("Edge") > -1) {
+            console.log("Removing native Edge fetch in favor of swagger-ui's polyfill")
+            window.fetch = undefined;
+        }</script>
+    <script src="./js/doc-ui.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/gen-doc-ui.js"></script>
+    <script>
+        window.onload = function () {
+
+            console.log("xxxxxx");
+
+            var configObject = JSON.parse('%(ConfigObject)');
+            // Build a system
+            configObject.dom_id = "eventbusdoc-ui";
+            const ui = CreateUI(configObject);
+
+        }</script>
+</body>
+</html>

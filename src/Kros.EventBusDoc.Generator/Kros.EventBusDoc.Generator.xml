@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kros.EventBusDoc.Generator</name>
+    </assembly>
+    <members>
+        <member name="P:Kros.EventBusDoc.Generator.BusentAnnotation.EventBusAssemblyScourAttribute.TaggedConsumer">
+            <summary>
+            False result int searching the consumer by well-know inteface IConsumerTHEvent
+            from namespace MassTransit
+            </summary>
+        </member>
+        <member name="P:Kros.EventBusDoc.Generator.BusentAnnotation.EventBusAssemblyScourAttribute.ServiceDir">
+            <summary>
+            So far meant to be to look for only specified assembly directory
+            </summary>
+        </member>
+        <member name="P:Kros.EventBusDoc.Generator.BusentAnnotation.EventBusAssemblyScourAttribute.ConsumerDir">
+            <summary>
+            Meant for static assigned to scour files
+            </summary>
+        </member>
+        <member name="T:Kros.EventBusDoc.Generator.BusentScour.Interfaces.IScourer">
+            <summary>
+            Contract for looking for the consumers and the publishers.
+            </summary>
+        </member>
+        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.DeclarativeScourer.ScourCore(System.Collections.Generic.IEnumerable{Kros.EventBusDoc.Generator.BusentAnnotation.EventBusBaseAttribute})">
+            <summary>
+            Scour with declarative principle
+            </summary>
+            <param name="enumerable"></param>
+        </member>
+        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.RelativeScourer.FindServices(Kros.EventBusDoc.Generator.BusentAnnotation.EventBusAssemblyScourAttribute)">
+            <summary>
+            Finds all types that are registerd/tagged bythe specific attribute
+            </summary>
+            <param name="assemblyAttribute">Assembly attribute</param>
+        </member>
+        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.RelativeScourer.Findconsumers(Kros.EventBusDoc.Generator.BusentAnnotation.EventBusAssemblyScourAttribute)">
+            <summary>
+            Finds all types that are register/tagged by the specific attribute
+            </summary>
+            <param name="assemblyAttribute"></param>
+        </member>
+        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.RelativeScourer.FindByAttributeTypeIn(System.Type,System.String)">
+            <summary>
+            Finds only tagged types, if defined pattern then in specify otherwise scour all assembly
+            </summary>
+            <param name="attributeType"></param>
+            <param name="pattern"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.RelativeScourer.MatchSserviceAndConsumer">
+            <summary>
+            Search for the service and their consumers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.RelativeScourer.HasPublishTagWithType(System.Type,System.Type)">
+            <summary>
+            Checks if the the tagged methods by EType
+            has the appropriate published type.
+            </summary>
+            <param name="publisher"></param>
+            <param name="pulished"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Kros.EventBusDoc.Generator.BusentScour.XmlReader.XmlDocumentationType.Property">
+            <summary>
+            marks a property in xml document
+            </summary>
+        </member>
+        <member name="F:Kros.EventBusDoc.Generator.BusentScour.XmlReader.XmlDocumentationType.Class">
+            <summary>
+            marks a class type in xml document
+            </summary>
+        </member>
+        <member name="F:Kros.EventBusDoc.Generator.BusentScour.XmlReader.XmlDocumentationType.Summary">
+            <summary>
+            marks the summary in the xml document
+            </summary>
+        </member>
+        <member name="F:Kros.EventBusDoc.Generator.BusentScour.XmlReader.XmlDocumentationType.Remarks">
+            <summary>
+            marks the remarks in the xml document
+            </summary>
+        </member>
+        <member name="M:Kros.EventBusDoc.Generator.Helpers.TypeExtensions.GetName(System.Type)">
+            <summary>
+            Get the name of type, it consider if it is a collection to format the string looks better
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kros.EventBusDoc.Generator.Helpers.TypeExtensions.GetGenericName(System.String,System.Type[])">
+            <summary>
+            Nesty workaround to get the neat type of collections.
+            </summary>
+            <param name="givenName"></param>
+            <param name="genericArguments"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kros.EventBusDoc.Generator.Middleware.Extensions.EventBusDocGenOptionExtensions.EventBusDoc(Kros.EventBusDoc.Generator.BusentScour.Generators.EventBusDocGenOptions,System.String,Kros.EventBusDoc.Generator.Middleware.Info)">
+            <summary>
+            Define one or more documents to be created by the generator
+            </summary>
+            <param name="genOptions"></param>
+            <param name="name">A URI-friendly name that uniquely identifies the document</param>
+            <param name="info">Global metadata to be included in the Swagger output</param>
+        </member>
+    </members>
+</doc>

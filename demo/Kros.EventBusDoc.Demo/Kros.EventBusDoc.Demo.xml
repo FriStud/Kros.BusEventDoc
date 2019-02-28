@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kros.EventBusDoc.Demo</name>
+    </assembly>
+    <members>
+        <member name="T:Kros.EventBusDoc.Demo.Types.GenericClass`1">
+            <summary>
+            Generic class withT
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Kros.EventBusDoc.Demo.Types.GenericClass`1.GenericClassArgument">
+            <summary>
+            The generic argument
+            </summary>
+        </member>
+        <member name="P:Kros.EventBusDoc.Demo.Types.GenericClass`1.InGenericSimpleClass">
+            <summary>
+            Simple class in generic class
+            </summary>
+        </member>
+        <member name="P:Kros.EventBusDoc.Demo.Types.GenericClass`1.GenericDescription">
+            <summary>
+            Description of generic class
+            </summary>
+        </member>
+        <member name="T:Kros.EventBusDoc.Demo.Types.IConsumeOne">
+            <summary>
+            Consume one interface
+            </summary>
+        </member>
+        <member name="T:Kros.EventBusDoc.Demo.Types.IConsumeTwo">
+            <summary>
+            Consume two interface
+            </summary>
+        </member>
+        <member name="T:Kros.EventBusDoc.Demo.Types.InSigthOfEventType">
+            <summary>
+            Nested type fo interface
+            </summary>
+        </member>
+        <member name="T:Kros.EventBusDoc.Demo.Types.ISendCommand">
+            <summary>
+            Send command interface
+            </summary>
+        </member>
+        <member name="T:Kros.EventBusDoc.Demo.Types.ISnedEvent">
+            <summary>
+            Sending Event interface
+            </summary>
+            <remarks>
+            This has some Additionl data
+            </remarks>
+        </member>
+        <member name="P:Kros.EventBusDoc.Demo.Types.ISnedEvent.InterfaceInEvent">
+            <summary>
+            Summary for the Property of ISendEvent of InsightofEventType
+            </summary>
+            <remarks>
+            DATA for the property
+            </remarks>
+        </member>
+    </members>
+</doc>

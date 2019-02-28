@@ -1,0 +1,118 @@
+﻿body {
+  min-height: 50%;
+  background: #cbe2c1;
+  background: -webkit-radial-gradient(ellipse at center, rgb(17, 67, 96) 0%, rgb(17, 45, 68) 50%);
+  background: -moz-radial-gradient(ellipse at center, rgb(17, 67, 96) 0%, rgb(17, 45, 68) 50%);
+  background: radial-gradient(ellipse at center, rgb(17, 67, 96) 0%, rgb(17, 45, 68) 50%);
+  padding: 44px 0 22px 0;
+  font-family: "Times New Roman", Times, serif;
+}
+
+
+header{
+  background-color:black ;
+  min-height: 2.6em;
+}
+
+footer{
+  background-color:black ;
+  min-height: 2.6em;
+  margin-top: 1.3em;
+}
+
+fieldset {
+  margin: auto;
+  border: 0;
+}
+
+.api-selection{ 
+  float: right;
+  padding-right:4%;
+  padding: 12px;
+}
+
+.api-selection label{
+  color: aliceblue;
+}
+
+.api-selection select{
+  border-radius: 6px;
+}
+
+.logo{
+  float: left;
+  color: azure;
+  background-color: aliceblue;
+}
+
+.i-desc{
+  border-left: 1px dotted #5724c7;
+  padding-left: 5px;
+  overflow-wrap: break-word;
+}
+
+.i-messages:before {
+  content: ""; 
+  display: block;
+  margin: 0 auto;
+  width: 95%; 
+  padding-top: 20px;
+  border-bottom: 1px dotted #5724c7;
+}
+
+.service-header{
+    padding: 5px 10px 5px 10px ;
+  }
+
+  .container .header {
+      background-color:#66cc00;
+      padding: 2px;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 5px 15px;
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
+      letter-spacing: 1px;
+  }
+
+  .header > span {
+      float: right;
+      width: 35px;
+      border: 1px solid ;
+      border-radius: 10px;
+      text-align: center;
+      color: #f2f2f2;
+      vertical-align: center;
+      background-color:  #99ceff;
+      margin-right: 3%;
+  }
+
+  .head-foot{
+    background: #466368;
+    background: radial-gradient(#648880, #293f50);
+    border-radius: 6px;
+    min-height: 50px;
+  }
+
+  fieldset.scheduler-border {
+    border: 1px groove #d13b3b  !important;
+    border-radius: 5px;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow: 0px 0px 0px 0px #c7ccc5;
+    box-shadow: 0px 0px 0px 0px #c7ccc5;
+  }
+
+  legend.scheduler-border {
+    font-size: 1.2em !important;
+    font-style: italic;
+    text-align: left !important;
+    width: auto;
+    padding: 0px 10px;
+    border-bottom: none;
+  }
+
+div[href*="#"]:hover {
+    cursor: pointer;
+    color: #ff3300;
+  }

@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Develop\BusEventDoc-FriStud\Kros.BusEventDoc\src\Kros.EventBusDoc.UI\Kros.EventBusDoc.UI.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="assests\css\bootstrap.min.css" />
+    <None Remove="assests\css\doc-ui.css" />
+    <None Remove="assests\js\bootstrap.min.js" />
+    <None Remove="assests\js\doc-ui.js" />
+    <None Remove="assests\js\gen-doc-ui.js" />
+    <None Remove="assests\js\jquery-3.3.1.min.js" />
+    <None Remove="index.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="assests\css\bootstrap.min.css" />
+    <EmbeddedResource Include="assests\css\doc-ui.css" />
+    <EmbeddedResource Include="assests\js\bootstrap.min.js" />
+    <EmbeddedResource Include="assests\js\doc-ui.js" />
+    <EmbeddedResource Include="assests\js\gen-doc-ui.js" />
+    <EmbeddedResource Include="assests\js\jquery-3.3.1.min.js" />
+    <EmbeddedResource Include="index.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+</Project>

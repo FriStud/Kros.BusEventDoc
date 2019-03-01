@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Kros.EventBusDoc.Demo.Extensions;
+using Kros.EventBusDoc.Demo.Services;
 
 namespace Kros.EventBusDoc.Demo
 {
@@ -21,6 +22,8 @@ namespace Kros.EventBusDoc.Demo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddWebApi();
+
+            services.AddHttpClient<IOrderingService, OrderingService>();
 
             services.AddEventBusDocGen(c => c.EventBusDoc("v1", new Info { Version = "v1", Title = "Demo" }));
         }

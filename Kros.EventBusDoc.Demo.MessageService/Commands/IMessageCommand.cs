@@ -1,6 +1,6 @@
-﻿using Kros.EventBusDoc.Demo.MessageService.Interfaces;
+﻿using Kros.EventBusDoc.Demo.Services.Interfaces;
 
-namespace Kros.EventBusDoc.Demo.MessageService.Commands
+namespace Kros.EventBusDoc.Demo.Services.Commands
 {
     /// <summary>
     /// Message commad out of the demo scope api.

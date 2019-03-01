@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kros.EventBusDoc.Demo.Controlers
 {
@@ -22,7 +19,6 @@ namespace Kros.EventBusDoc.Demo.Controlers
             this.repository = repository;
             this.logger = logger;
         }
-
 
         [HttpGet]
         [ProducesResponseType(200)]

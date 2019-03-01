@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Kros.EventBusDoc.Demo.Controlers
 {
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
     {

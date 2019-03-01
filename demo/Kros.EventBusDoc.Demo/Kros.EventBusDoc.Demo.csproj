@@ -22,4 +22,9 @@
     <ProjectReference Include="..\..\src\Kros.EventBusDoc.UI\Kros.EventBusDoc.UI.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Invoice\" />
+  </ItemGroup>
+
 </Project>

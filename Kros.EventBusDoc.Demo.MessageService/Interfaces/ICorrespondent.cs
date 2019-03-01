@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Kros.EventBusDoc.Demo.MessageService.Interfaces
 {
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// Correspondent used out of the demo scope.
+    /// </remarks>
     public interface ICorrespondent
     {
         string Name { get; set; }

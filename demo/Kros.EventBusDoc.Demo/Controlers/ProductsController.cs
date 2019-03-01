@@ -24,7 +24,7 @@ namespace Kros.EventBusDoc.Demo.Controlers
 
 
         [HttpGet]
-        [ProducesResponseType(200)] /// what we can expect to be the result of function
+        [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         public ActionResult<IEnumerable<Product>> Get()
         {

@@ -11,5 +11,6 @@ namespace Kros.EventBusDoc.Demo.Controlers
     public class ContactController : ControllerBase
     {
 
+
     }
 }

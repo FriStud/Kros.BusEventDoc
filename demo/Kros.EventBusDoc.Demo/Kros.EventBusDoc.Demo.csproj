@@ -18,13 +18,9 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Kros.EventBusDoc.Demo.MessageService\Kros.EventBusDoc.Demo.MessageService.csproj" />
     <ProjectReference Include="..\..\src\Kros.EventBusDoc.Generator\Kros.EventBusDoc.Generator.csproj" />
     <ProjectReference Include="..\..\src\Kros.EventBusDoc.UI\Kros.EventBusDoc.UI.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Invoice\" />
   </ItemGroup>
 
 </Project>

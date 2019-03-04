@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kros.EventBusDoc.Demo.Commands
+namespace Kros.EventBusDoc.Demo.Services.Commands
 {
     public class CancelOrderCommand
     {

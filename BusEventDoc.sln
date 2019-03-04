@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kros.EventBusDoc.UI", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kros.EventBusDoc.Demo", "demo\Kros.EventBusDoc.Demo\Kros.EventBusDoc.Demo.csproj", "{3A630BA1-4F38-4988-B74B-F6099EEB08F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kros.EventBusDoc.Demo.Services", "Kros.EventBusDoc.Demo.MessageService\Kros.EventBusDoc.Demo.Services.csproj", "{ABE3486E-EB78-456C-A438-1E37EDCD7CBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kros.EventBusDoc.Demo.Services", "Kros.EventBusDoc.Demo.MessageService\Kros.EventBusDoc.Demo.Services.csproj", "{ABE3486E-EB78-456C-A438-1E37EDCD7CBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

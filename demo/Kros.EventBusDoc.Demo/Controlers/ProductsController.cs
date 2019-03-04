@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Kros.EventBusDoc.Demo.Controlers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
     {

@@ -1,14 +1,14 @@
 ﻿using Kros.EventBusDoc.Demo.Services;
+using Kros.EventBusDoc.Demo.Services.Commands;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Kros.EventBusDoc.Demo.Controlers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class OrderController : ControllerBase
     {
         private readonly IOrderingService _orderSvc;
@@ -20,11 +20,13 @@ namespace Kros.EventBusDoc.Demo.Controlers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Cancel(int orderId)
+        [Route("cancel")]
+        [HttpPut]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> CancelOrderAsync([FromBody]CancelOrderCommand command, [FromHeader(Name = "x-requestid")] string requestId)
         {
-            await _orderSvc.CancelOrder(orderId);
-
-            return RedirectToAction("Index");
+            return Ok();
         }
 
     }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kros.EventBusDoc.Demo.Extensions
+namespace Kros.EventBusDoc.Demo2.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -24,7 +24,12 @@ namespace Kros.EventBusDoc.Demo.Extensions
             builder.AddAuthorization();
             builder.AddFormatterMappings();
             builder.AddJsonFormatters();
-            //builder.AddCors();
+            //builder.AddCors(o => o.AddPolicy("MyPolicy", b =>
+            //{
+            //    b.AllowAnyOrigin()
+            //           .AllowAnyMethod()
+            //           .AllowAnyHeader();
+            //}));
 
             return new MvcCoreBuilder(builder.Services, builder.PartManager);
         }

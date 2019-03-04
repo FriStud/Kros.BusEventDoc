@@ -1,10 +1,9 @@
-﻿body {
-  min-height: 50%;
+﻿body{
+  min-height: 20%;
   background: #cbe2c1;
-  background: -webkit-radial-gradient(ellipse at center, rgb(17, 67, 96) 0%, rgb(17, 45, 68) 50%);
-  background: -moz-radial-gradient(ellipse at center, rgb(17, 67, 96) 0%, rgb(17, 45, 68) 50%);
+  background: -webkit-linear-gradient(to center, #a1d3b0, #f6f1d3);
+  background: -moz-linear-gradient(to center, #a1d3b0, #f6f1d3);
   background: radial-gradient(ellipse at center, rgb(17, 67, 96) 0%, rgb(17, 45, 68) 50%);
-  padding: 44px 0 22px 0;
   font-family: "Times New Roman", Times, serif;
 }
 
@@ -25,10 +24,21 @@ fieldset {
   border: 0;
 }
 
-.api-selection{ 
+.topbar{
+  padding: 10px 0;
+  background-color: black;
+  margin-bottom: 10px;
+  color: azure
+}
+
+.wrapper{
+  padding-left: 7px;
+  padding-right: 7px;
+  vertical-align: center;
+}
+
+.api-selection{
   float: right;
-  padding-right:4%;
-  padding: 12px;
 }
 
 .api-selection label{
@@ -40,10 +50,9 @@ fieldset {
 }
 
 .logo{
-  float: left;
-  color: azure;
-  background-color: aliceblue;
+  display: inline-block;
 }
+
 
 .i-desc{
   border-left: 1px dotted #5724c7;
@@ -52,10 +61,10 @@ fieldset {
 }
 
 .i-messages:before {
-  content: ""; 
+  content: "";
   display: block;
   margin: 0 auto;
-  width: 95%; 
+  width: 95%;
   padding-top: 20px;
   border-bottom: 1px dotted #5724c7;
 }

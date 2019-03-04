@@ -7,7 +7,7 @@
     "/": '&#x2F;'
 };
 
-String.prototype.escapeHTML = function() {
+String.prototype.escapeHTML = function () {
     return String(this).replace(/[&<>"'\/]/g, function (s) {
         return __entityMap[s];
     });
@@ -33,8 +33,9 @@ function parseResponse(xhttp, config) {
     var obj = JSON.parse(textJson);
     console.log("parsing data");
 
+    //getVersionSectionHtml(obj.middleWareVersion),
     insertHtml(config.dom_id,
-        getVersionSectionHtml(obj.middleWareVersion),
+        getHeaderHtml(config.urls),
         geServiceSectionHtml(obj.service),
         getDefinitionSectionHtml(obj.definitions),
         getTypesSectionHtml(obj.types)
@@ -190,4 +191,24 @@ function getPropertyHtml(property) {
         </div>
 </div>
 `;
+}
+
+function attachOptions(selectionelement,urls)
+{
+    urls.forEach(element => {
+        let opt = document.createElement('option');
+        opt.setAttribute("value",element.url);
+        opt.innerHTML = element.name;
+        selectionelement.append(opt);
+    });
+}
+
+function getHeaderHtml(urls) {
+    let selections = document.createElement('select');
+    selections.setAttribute("id","api");
+    selections.setAttribute("name","api");
+
+    attachOptions(selections,urls);
+
+    return selections.outerHTML;
 }

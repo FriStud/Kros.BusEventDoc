@@ -1,14 +1,12 @@
+﻿using Kros.EventBusDoc.Demo2.Extensions;
 using Kros.EventBusDoc.Generator.Middleware;
 using Kros.EventBusDoc.Generator.Middleware.Extensions;
-using Kros.EventBusDoc.UI.Middleware.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Kros.EventBusDoc.Demo.Extensions;
-using Kros.EventBusDoc.Demo.Services;
 
-namespace Kros.EventBusDoc.Demo
+namespace Kros.EventBusDoc.Demo2
 {
     public class Startup
     {
@@ -19,15 +17,15 @@ namespace Kros.EventBusDoc.Demo
 
         public IConfiguration Configuration { get; }
 
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddWebApi();
 
-            services.AddHttpClient<IOrderingService, OrderingService>();
-
-            services.AddEventBusDocGen(c => c.EventBusDoc("v1", new Info { Version = "v1", Title = "Demo" }));
+            services.AddEventBusDocGen(c => c.EventBusDoc("v2", new Info { Version = "v2", Title = "Demo2" }));
         }
 
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -36,21 +34,13 @@ namespace Kros.EventBusDoc.Demo
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            //app.UseHttpsRedirection();
             app.UseMvc();
-
-            //app.UseCors("MyPolicy");
             app.UseEventBusDoc();
-            app.UseEventBusDocUI(c =>
-            {
-                c.EventBusDocEndPoint("v1/busent.json", "Demo v1");
-                c.EventBusDocEndPoint("http://localhost:5000/busent/v2/busent.json", "Demo v2");
-            });
         }
     }
 }

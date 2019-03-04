@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Develop\BusEventDoc-FriStud\Kros.BusEventDoc\demo\Kros.EventBusDoc.Demo2\Kros.EventBusDoc.Demo2.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Kros.EventBusDoc.Demo.MessageService\Kros.EventBusDoc.Demo.Services.csproj" />
+    <ProjectReference Include="..\..\src\Kros.EventBusDoc.Generator\Kros.EventBusDoc.Generator.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -41,7 +41,7 @@ $.fn.extend({
         }
     },
 
-   
+
 
     decorateservice: function () {
         $(this).wrap("<div class='container'></div>");
@@ -162,42 +162,76 @@ $.fn.extend({
         $(this).append(deta);
     },
     // put here service content
-    serviceAddRowStyle: function(){
+    serviceAddRowStyle: function () {
         let mess = $(this).find(`> .i-messages`).detach();
         $(this).wrapInner(`<div class="i"></div>`);
         $(this).find('div').first().collumProp("col-md-7", "col-md-5");
 
-        mess.addClass('row').find('> div').each(function()
-        {
+        mess.addClass('row').find('> div').each(function () {
             $(this).addClass("col-md-4");
         });
 
         $(this).append(mess);
     },
 
-    addHeader: function(){
-        `<header>
-        <div class="logo">
-          <i class="fab fa-accessible-icon"></i>
-        </div>
-        <div class="api-selection">
-          <fieldset>
-            <label>Api select:</label>
-            <select name="people" id="people">
-              <option value="0">XXX</option>
-              <option value="1">YYY</option>
-              <option value="2">TTT</option>
-            </select>
-          </fieldset>
-        </div>
-      </header>`;
+    addHeader: function () {
+        let apiselect = $("#api");
+        let last;
+        last = apiselect.wrap(`<div class="wrapper"><div class="api-selection"><fieldset></fieldset></div></div>`)
+            .parent().prepend(`<label>Api select:</label>`).parent().parent();
+
+        last.prepend(`<div class="logo">EVENT BUS DOC</div>`).wrap(`<div class="topbar"></div>`);
+
+        $("#api").on('change', function (e) {
+        //     let selected = this.value;
+        //     if(selected)
+        //         selected = selected;
+        //     $.ajax({
+        //         url: selected,
+        //         type: "GET",
+        //         dataType: "application/json",
+        //         error: function (xhr,status,error){
+        //             console.log(error);
+
+
+        //         }
+        //     }).done(function (data) {
+        //         let doc = text(data);
+        //         renewUi(doc);
+        //     }).fail(function (jqXHR, textStatus, errorThrown) {
+        //         console.log(jqXHR);
+        //         console.log(textStatus);
+        //         console.log(errorThrown);
+        //     });
+        
+            let http = new XMLHttpRequest();
+            http.onreadystatechange = function (e) {
+                if (this.readyState == 4 && this.status == 200) {
+                    
+                    console.log("creation done");
+                }
+            };
+            http.onload = function(e) {
+                var arraybuffer = http.response; // not responseText
+                /* ... */
+            }
+            http.open("GET", this.value, true);
+            http.setRequestHeader('Accept', 'application/json');
+            
+            http.send();
+        });
+
+
+
     },
 
-    addFooter: function(){
+    renewUi: function (xhtps) {
+        var data = xhtps.respresponseText;
+    },
+
+    addFooter: function () {
         `<footer></footer>`;
     }
-
-
 });
 
 $(document).ready(function () {
@@ -223,4 +257,6 @@ $(document).ready(function () {
     $("#types").decoratetypes();
 
     $(this).decorateproperties();
+
+    $(this).addHeader();
 });

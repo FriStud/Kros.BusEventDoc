@@ -183,26 +183,25 @@ $.fn.extend({
         last.prepend(`<div class="logo">EVENT BUS DOC</div>`).wrap(`<div class="topbar"></div>`);
 
         $("#api").on('change', function (e) {
-        //     let selected = this.value;
-        //     if(selected)
-        //         selected = selected;
-        //     $.ajax({
-        //         url: selected,
-        //         type: "GET",
-        //         dataType: "application/json",
-        //         error: function (xhr,status,error){
-        //             console.log(error);
-
-
-        //         }
-        //     }).done(function (data) {
-        //         let doc = text(data);
-        //         renewUi(doc);
-        //     }).fail(function (jqXHR, textStatus, errorThrown) {
-        //         console.log(jqXHR);
-        //         console.log(textStatus);
-        //         console.log(errorThrown);
-        //     });
+            // let selected = this.value;
+            // if(selected){
+            //     $.ajax({
+            //         url: selected,
+            //         headers:{'Access-Control-Allow-Origin': '*'},
+            //         type: "GET",
+            //         dataType: "application/json",
+            //         error: function (xhr,status,error){
+            //             console.log(error);
+            //         }
+            //     }).done(function (data) {
+            //         let doc = text(data);
+            //         renewUi(doc);
+            //     }).fail(function (jqXHR, textStatus, errorThrown) {
+            //         console.log(jqXHR);
+            //         console.log(textStatus);
+            //         console.log(errorThrown);
+            //     });
+            // }
         
             let http = new XMLHttpRequest();
             http.onreadystatechange = function (e) {
@@ -220,8 +219,6 @@ $.fn.extend({
             
             http.send();
         });
-
-
 
     },
 

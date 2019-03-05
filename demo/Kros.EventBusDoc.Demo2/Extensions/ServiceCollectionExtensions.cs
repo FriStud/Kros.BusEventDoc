@@ -24,12 +24,12 @@ namespace Kros.EventBusDoc.Demo2.Extensions
             builder.AddAuthorization();
             builder.AddFormatterMappings();
             builder.AddJsonFormatters();
-            //builder.AddCors(o => o.AddPolicy("MyPolicy", b =>
-            //{
-            //    b.AllowAnyOrigin()
-            //           .AllowAnyMethod()
-            //           .AllowAnyHeader();
-            //}));
+            builder.AddCors(o => o.AddPolicy("MyPolicy", b =>
+            {
+                b.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
 
             return new MvcCoreBuilder(builder.Services, builder.PartManager);
         }

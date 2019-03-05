@@ -39,6 +39,7 @@ namespace Kros.EventBusDoc.Demo2
             }
 
             //app.UseHttpsRedirection();
+            app.UseCors("MyPolicy");
             app.UseMvc();
             app.UseEventBusDoc();
         }

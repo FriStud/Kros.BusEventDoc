@@ -44,7 +44,7 @@ namespace Kros.EventBusDoc.Demo
             app.UseStaticFiles();
             app.UseMvc();
 
-            //app.UseCors("MyPolicy");
+            app.UseCors("MyPolicy");
             app.UseEventBusDoc();
             app.UseEventBusDocUI(c =>
             {

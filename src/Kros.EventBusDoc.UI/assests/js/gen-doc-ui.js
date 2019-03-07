@@ -7,13 +7,20 @@
 
 $.fn.extend({
     // under the called element finds the header and set a click evetn to get
-    excollapseonclick: function () {
+    excollapseOnClick: function () {
         $(this).find(`> .header`).click(function () {
-            $(this).clickforcardstyle();
+            $(this).clickForCardStyle();
         });
     },
 
-    clickforcardstyle: function () {
+    initialCollapseAll: function(){
+        $(this).find(`.header`).each(function(){
+            $(this).trigger("click");
+        });
+
+    },
+
+    clickForCardStyle: function () {
         parent = $(this).parent();
         parent.find("> .content").slideToggle().toggleClass("active");
 
@@ -41,9 +48,7 @@ $.fn.extend({
         }
     },
 
-
-
-    decorateservice: function () {
+    decorateService: function () {
         $(this).wrap("<div class='container'></div>");
         let serhead = $(".i-ser-head");
         let namehead = $(".i-ser-head > .i-name").text();
@@ -52,57 +57,57 @@ $.fn.extend({
 
         $(this).prepend(`<div id="s-head" class="header">${namehead}<span><strong>+</strong></span></div>`);
 
-        $("#s-head").excollapseonclick();
-        $(this).excollapseonclick();
+        $("#s-head").excollapseOnClick();
+        $(this).excollapseOnClick();
         $(this).addCardStyle();
 
         $(this).find(`.i-ser-head`).serviceAddRowStyle();
     },
 
-    decoratedefinitions: function () {
+    decorateDefinitions: function () {
         $(this).find("> .i-def").each(function () {
             let defhead = $(this).find('> .i-name').addClass("header").detach();
             defhead.append(`<span><strong>+</strong></span></div>`);
 
             $(this).wrapInner(`<div class="content"></div>`)
             $(this).prepend(defhead);
-            $(this).excollapseonclick();
+            $(this).excollapseOnClick();
             $(this).addCardStyle();
         });
     },
 
-    decoratetypes: function () {
+    decorateTypes: function () {
         $(this).find('> .i-type').each(function () {
             let deftype = $(this).find(`> .i-name`).addClass("header").detach();
             deftype.append(`<span><strong>+</strong></span></div>`);
 
             $(this).wrapInner(`<div class="content"></div>`);
             $(this).prepend(deftype);
-            $(this).excollapseonclick();
+            $(this).excollapseOnClick();
             $(this).addCardStyle();
         });
 
         $(this).wrapInner(`<div class="content"></div>`)
             .prepend(`<div class="header">Types <span><strong>+</strong></span></div>`)
-        $(this).excollapseonclick();
+        $(this).excollapseOnClick();
         $(this).addCardStyle();
     },
 
-    foreachtypeid: function () {
+    forTypesIds: function () {
         $(this).find(`> .i-type`).each(function () {
-            let idfullname = $.trim($(this).find(`> .i-full-name`).fulltypeclean());
+            let idfullname = $.trim($(this).find(`> .i-full-name`).cleanTypeFormat());
             $(this).attr('id', idfullname);
         });
     },
 
-    refallsections: function (sections, acctoids, itself = true) {
+    setReferenceForSections: function (sections, acctoids, itself = true) {
         let doc = $(this);
         $.each(sections, function (i, val) {
             doc.find(val).each(function () {
                 $(this).find(".i-prop").each(function () {
-                    var target = $.trim($(this).find("> .i-prim").cleanrecievetext("Primitive : "));
+                    var target = $.trim($(this).find("> .i-prim").cleanDefaultText("Primitive : "));
                     if (target == "false") {
-                        let strid = ("#" + $.trim($(this).find(`> .i-full-name`).fulltypeclean()));
+                        let strid = ("#" + $.trim($(this).find(`> .i-full-name`).cleanTypeFormat()));
                         if ($(strid, acctoids).length) {
                             $(this).find(`> .i-type`).attr('href', strid);
                         }
@@ -112,17 +117,18 @@ $.fn.extend({
         });
     },
 
-    cleanrecievetext: function (pattern) {
+    cleanDefaultText: function (pattern) {
         return $(this).text().replaceAll(pattern, "");
     },
 
-    fulltypeclean: function () {
-        return $(this).cleanrecievetext("Full Name : ")
+    cleanTypeFormat: function () {
+        return $(this).cleanDefaultText("Full Name : ")
             .replaceAll('.', '').replaceAll(`<`, '').replaceAll(`>`, '')
             .replaceAll(`[`, '').replaceAll(`]`, '');
     },
 
-    autouncollapse: function () {
+    ///automatic uncollapse the searched type on click
+    autoUnCollapse: function () {
         let first;
         [first] = $(this).find(".card-header");
 
@@ -130,22 +136,22 @@ $.fn.extend({
 
         $.each(revParents, function (i, val) {
             if ($(val).hasClass("active")) {
-                $(val).clickforcardstyle();
+                $(val).clickForCardStyle();
             }
         });
 
         if ($(first).parent().find("> .content").hasClass("active")) {
-            $(first).clickforcardstyle();
+            $(first).clickForCardStyle();
         }
     },
 
-    decorateproperties: function () {
+    decorateProperties: function () {
         $(this).find('.i-properties').each(function () {
             $(this).wrap(`<fieldset class="scheduler-border"></fieldset>`);
             $(this).parent().prepend(`<legend class="scheduler-border">Properties</legend>`);
 
             $(this).find('> .i-prop').each(function () {
-                let headName = $(this).find(`> .i-name`).cleanrecievetext("Name : ");
+                let headName = $(this).find(`> .i-name`).cleanDefaultText("Name : ");
                 $(this).wrap(`<fieldset class="scheduler-border"></fieldset>`);
                 $(this).parent().prepend(`<legend class="scheduler-border">${headName}</legend>`);
                 $(this).collumProp("col-md-7", "col-md-5");
@@ -174,6 +180,7 @@ $.fn.extend({
         $(this).append(mess);
     },
 
+    /// adding header with style
     addHeader: function () {
         let apiselect = $("#api");
         let last;
@@ -183,77 +190,49 @@ $.fn.extend({
         last.prepend(`<div class="logo">EVENT BUS DOC</div>`).wrap(`<div class="topbar"></div>`);
 
         $("#api").on('change', function (e) {
-            // let selected = this.value;
-            // if(selected){
-            //     $.ajax({
-            //         url: selected,
-            //         headers:{'Access-Control-Allow-Origin': '*'},
-            //         type: "GET",
-            //         dataType: "application/json",
-            //         error: function (xhr,status,error){
-            //             console.log(error);
-            //         }
-            //     }).done(function (data) {
-            //         let doc = text(data);
-            //         renewUi(doc);
-            //     }).fail(function (jqXHR, textStatus, errorThrown) {
-            //         console.log(jqXHR);
-            //         console.log(textStatus);
-            //         console.log(errorThrown);
-            //     });
-            // }
-        
             let http = new XMLHttpRequest();
             http.onreadystatechange = function (e) {
                 if (this.readyState == 4 && this.status == 200) {
-                    
-                    console.log("creation done");
+                    $("#eventbusdoc-ui").empty();
+                    postParse(this, "eventbusdoc-ui");
+                    $(this).enableGenUi();
                 }
             };
-            http.onload = function(e) {
-                var arraybuffer = http.response; // not responseText
-                /* ... */
-            }
-            http.open("GET", this.value, true);
-            http.setRequestHeader('Accept', 'application/json');
-            
+            http.open("GET", this.value, false);
             http.send();
         });
-
     },
 
-    renewUi: function (xhtps) {
-        var data = xhtps.respresponseText;
-    },
+    ///enbaling ui give it a asic event and style
+    enableGenUi: function()
+    {
+        $('#types').forTypesIds();
 
-    addFooter: function () {
-        `<footer></footer>`;
+        $(this).setReferenceForSections([".i-def", ".i-type"], "#types", true);
+    
+        $('div[href^="#"').on('click', function (event) {
+            let target = $(this.getAttribute('href'));
+            if (target.length) {
+                event.preventDefault();
+                target.autoUnCollapse();
+                $('html, body').stop().animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+            }
+        });
+    
+        $("#service").decorateService();
+    
+        $("#definitions").decorateDefinitions();
+    
+        $("#types").decorateTypes();
+    
+        $(this).decorateProperties();
+
     }
 });
 
 $(document).ready(function () {
-    $('#types').foreachtypeid();
-
-    $(this).refallsections([".i-def", ".i-type"], "#types", true);
-
-    $('div[href^="#"').on('click', function (event) {
-        let target = $(this.getAttribute('href'));
-        if (target.length) {
-            event.preventDefault();
-            target.autouncollapse();
-            $('html, body').stop().animate({
-                scrollTop: target.offset().top
-            }, 1000);
-        }
-    });
-
-    $("#service").decorateservice();
-
-    $("#definitions").decoratedefinitions();
-
-    $("#types").decoratetypes();
-
-    $(this).decorateproperties();
-
+    $(this).enableGenUi();
     $(this).addHeader();
 });

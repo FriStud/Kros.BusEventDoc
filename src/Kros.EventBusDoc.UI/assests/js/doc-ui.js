@@ -29,17 +29,26 @@ function CreateUI(config) {
 
 //fire the parsing the data use as callback for http.onreadystatechange
 function parseResponse(xhttp, config) {
-    var textJson = xhttp.responseText;
-    var obj = JSON.parse(textJson);
-    console.log("parsing data");
+    setHeader(getHeaderHtml(config.urls));
 
-    //getVersionSectionHtml(obj.middleWareVersion),
-    insertHtml(config.dom_id,
-        getHeaderHtml(config.urls),
+    postParse(xhttp, config.dom_id);
+}
+
+///set only the content of the ui in the specific element
+function postParse(http, elementId) {
+    var obj = JSON.parse(http.responseText);
+
+    insertHtml(elementId,
         geServiceSectionHtml(obj.service),
         getDefinitionSectionHtml(obj.definitions),
         getTypesSectionHtml(obj.types)
     );
+}
+
+///set the header as a first child of body element
+function setHeader(header) {
+    let bb = document.querySelector('body');
+    bb.insertBefore(header, bb.firstChild);
 }
 
 ///concates the htmlData array into  one element and put it to specified element by id
@@ -53,19 +62,18 @@ function insertHtml(elementId, ...htmlData) {
     document.getElementById(elementId).innerHTML = insertedHtml;
 }
 
-/// :D like interface
 function getVersionSectionHtml(jsonVersion) {
     return (jsonVersion ? jsonVersion : `   undified    `);
 }
-/// :D like interface
+
 function geServiceSectionHtml(jsonService) {
     return (jsonService ? getServiceHtml(jsonService) : `   undified    `);
 }
-/// :D like interface
+
 function getDefinitionSectionHtml(jsonDefinition) {
     return (jsonDefinition ? getAllDefinitionsHtml(jsonDefinition) : `  undified  `);
 }
-/// :D like interface
+
 function getTypesSectionHtml(jsontypes) {
     return (jsontypes ? getlAllTypesHtml(jsontypes) : ` undified    `);
 }
@@ -193,22 +201,23 @@ function getPropertyHtml(property) {
 `;
 }
 
-function attachOptions(selectionelement,urls)
-{
+///attach urls optons to the given select element
+function attachOptions(selectionelement, urls) {
     urls.forEach(element => {
         let opt = document.createElement('option');
-        opt.setAttribute("value",element.url);
+        opt.setAttribute("value", element.url);
         opt.innerHTML = element.name;
         selectionelement.append(opt);
     });
 }
 
+///creates an select element with options, select has id api
 function getHeaderHtml(urls) {
     let selections = document.createElement('select');
-    selections.setAttribute("id","api");
-    selections.setAttribute("name","api");
+    selections.setAttribute("id", "api");
+    selections.setAttribute("name", "api");
 
-    attachOptions(selections,urls);
+    attachOptions(selections, urls);
 
-    return selections.outerHTML;
+    return selections;
 }

@@ -189,13 +189,16 @@ $.fn.extend({
 
         last.prepend(`<div class="logo">EVENT BUS DOC</div>`).wrap(`<div class="topbar"></div>`);
 
+        
+
         $("#api").on('change', function (e) {
-            let http = new XMLHttpRequest();
+            let http = new XMLHttpRequest();    
             http.onreadystatechange = function (e) {
                 if (this.readyState == 4 && this.status == 200) {
+                    let en = e;
                     $("#eventbusdoc-ui").empty();
                     postParse(this, "eventbusdoc-ui");
-                    $(this).enableGenUi();
+                    $(document).enableGenUi();
                 }
             };
             http.open("GET", this.value, false);

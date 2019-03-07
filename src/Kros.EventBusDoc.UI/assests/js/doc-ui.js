@@ -15,12 +15,10 @@ String.prototype.escapeHTML = function () {
 
 //fire the generation of pure tagged html from json document
 function CreateUI(config) {
-    console.log("setting for the creation");
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             parseResponse(this, config);
-            console.log("creation done");
         }
     };
     xhttp.open("GET", config.urls[0].url, false);

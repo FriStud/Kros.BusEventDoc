@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Kros.EventBusDoc.Demo.Extensions;
 using Kros.EventBusDoc.Demo.Services;
+using Kros.EventBusDoc.Generator.BusentScour.Generators;
 
 namespace Kros.EventBusDoc.Demo
 {
@@ -45,7 +46,16 @@ namespace Kros.EventBusDoc.Demo
             app.UseMvc();
 
             app.UseCors("MyPolicy");
-            app.UseEventBusDoc();
+            app.UseEventBusDoc(ebd =>
+            {
+                ebd.ServiceSettings = new ServiceSettings
+                {
+                    Name = "Main Demo 1",
+                    Version = "demo v 1.2",
+                    Description = "Main Demo 1 for demo puposes"
+                };
+            });
+
             app.UseEventBusDocUI(c =>
             {
                 c.EventBusDocEndPoint("v1/busent.json", "Demo v1");

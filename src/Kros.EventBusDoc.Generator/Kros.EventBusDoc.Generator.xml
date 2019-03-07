@@ -20,6 +20,11 @@
             Meant for static assigned to scour files
             </summary>
         </member>
+        <member name="T:Kros.EventBusDoc.Generator.BusentScour.Generators.ServiceSettings">
+            <summary>
+            Service settings.
+            </summary>
+        </member>
         <member name="T:Kros.EventBusDoc.Generator.BusentScour.Interfaces.IScourer">
             <summary>
             Contract for looking for the consumers and the publishers.
@@ -103,11 +108,11 @@
         </member>
         <member name="M:Kros.EventBusDoc.Generator.Middleware.Extensions.EventBusDocGenOptionExtensions.EventBusDoc(Kros.EventBusDoc.Generator.BusentScour.Generators.EventBusDocGenOptions,System.String,Kros.EventBusDoc.Generator.Middleware.Info)">
             <summary>
-            Define one or more documents to be created by the generator
+            Define document to be created by the generator
             </summary>
             <param name="genOptions"></param>
             <param name="name">A URI-friendly name that uniquely identifies the document</param>
-            <param name="info">Global metadata to be included in the Swagger output</param>
+            <param name="info">Global metadata to be included in the event bus doc output</param>
         </member>
     </members>
 </doc>

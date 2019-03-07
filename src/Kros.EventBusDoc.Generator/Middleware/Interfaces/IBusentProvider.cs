@@ -1,4 +1,5 @@
 ﻿using Kros.EventBusDoc.Generator.BusentScour.Document.InternStructure;
+using Kros.EventBusDoc.Generator.BusentScour.Generators;
 using Newtonsoft.Json;
 
 namespace Kros.EventBusDoc.Generator.Middleware.Interfaces
@@ -7,6 +8,6 @@ namespace Kros.EventBusDoc.Generator.Middleware.Interfaces
     {
         DocFormat Document { get; set; }
 
-        string Serialize(JsonSerializerSettings settings = null);
+        string Serialize(ServiceSettings serviceSettings, JsonSerializerSettings settings = null);
     }
 }

@@ -14,12 +14,14 @@ namespace Kros.EventBusDoc.Generator.Middleware.Extensions
            this IServiceCollection services,
            Action<EventBusDocGenOptions> setupAction = null)
         {
+
             services.AddTransient<IAttributeFetcher, AttributeFetcher>();
             services.AddTransient<IXmlDocumentationReader, XmlDocumentationReader>();
             services.AddTransient<IScourer, DeclarativeScourer>();
             services.AddTransient<IBusentProvider, DeclarativeGenerator>();
 
-            if (setupAction != null) services.ConfigureEventBusDocGen(setupAction);
+            if (setupAction != null)
+                services.ConfigureEventBusDocGen(setupAction);
 
             return services;
         }

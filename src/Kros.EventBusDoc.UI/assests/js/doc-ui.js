@@ -83,7 +83,7 @@ function getTypesSectionHtml(jsontypes) {
 function getServiceHtml(jsonservice) {
     let p = `<div id="service">
                 <div class="i-ser-head">
-                    <div class="i-name">Name : no name</div>
+                    <div class="i-name">Name : ${jsonservice.name}</div>
                     <div class="i-version">Version: ${jsonservice.version}</div>
                     <div class="i-desc">Description: ${jsonservice.description}
                 </div>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kros.EventBusDoc.Generator.BusentScour.Document.InternStructure
+namespace Kros.EventBusDoc.Generator.BusentScour.Document
 {
     [Flags]
     public enum MessageType

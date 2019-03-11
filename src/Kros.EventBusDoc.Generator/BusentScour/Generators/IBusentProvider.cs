@@ -1,8 +1,7 @@
-﻿using Kros.EventBusDoc.Generator.BusentScour.Document.InternStructure;
-using Kros.EventBusDoc.Generator.BusentScour.Generators;
+﻿using Kros.EventBusDoc.Generator.BusentScour.Document;
 using Newtonsoft.Json;
 
-namespace Kros.EventBusDoc.Generator.Middleware.Interfaces
+namespace Kros.EventBusDoc.Generator.BusentScour.Generators
 {
     public interface IBusentProvider
     {

@@ -3,7 +3,7 @@
 namespace Kros.EventBusDoc.Generator.BusentAnnotation
 {
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-    public class EventBusCommandConsumerAttribute : EventBusBaseAttribute
+    public class EventBusCommandAttribute: EventBusBaseAttribute
     {
     }
 }

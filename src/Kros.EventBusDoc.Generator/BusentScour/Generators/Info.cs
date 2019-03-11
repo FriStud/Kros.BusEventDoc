@@ -1,4 +1,4 @@
-﻿namespace Kros.EventBusDoc.Generator.Middleware
+﻿namespace Kros.EventBusDoc.Generator.BusentScour.Generators
 {
     public class Info
     {

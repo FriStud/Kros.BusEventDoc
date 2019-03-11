@@ -1,6 +1,6 @@
 ﻿using Kros.EventBusDoc.Generator.BusentScour.Generators;
 
-namespace Kros.EventBusDoc.Generator.Middleware.Extensions
+namespace Kros.EventBusDoc.Generator.Middleware
 {
     public static class EventBusDocGenOptionExtensions
     {

@@ -105,13 +105,5 @@ namespace Kros.EventBusDoc.Generator.Helpers
             @enum.GetType().GetField(@enum.ToString()).GetCustomAttributes(typeof(XmlTypeAttribute)).FirstOrDefault()
                 is XmlTypeAttribute description ? description.Description : @enum.ToString();
 
-        public static void AddAll<T>(this IList<T> list, IEnumerable<T> enumerable)
-        {
-            foreach (var item in enumerable)
-            {
-                list.Add(item);
-            }
-        }
-
     }
 }

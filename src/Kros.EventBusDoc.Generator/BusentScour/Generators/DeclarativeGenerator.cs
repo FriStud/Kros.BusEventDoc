@@ -1,8 +1,7 @@
-﻿using Kros.EventBusDoc.Generator.BusentScour.Document.InternStructure;
-using Kros.EventBusDoc.Generator.BusentScour.Interfaces;
+﻿using Kros.EventBusDoc.Generator.BusentScour.Document;
+using Kros.EventBusDoc.Generator.BusentScour.Scourers;
 using Kros.EventBusDoc.Generator.BusentScour.XmlReader;
 using Kros.EventBusDoc.Generator.Helpers;
-using Kros.EventBusDoc.Generator.Middleware.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;

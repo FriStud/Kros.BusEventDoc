@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using System;
 
-namespace Kros.EventBusDoc.Generator.Middleware.Extensions
+namespace Kros.EventBusDoc.Generator.Middleware
 {
     public static class ApplicationBuilderExtensions
     {

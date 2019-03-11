@@ -1,9 +1,7 @@
 ﻿using Kros.EventBusDoc.Generator.BusentScour.Generators;
-using Kros.EventBusDoc.Generator.Middleware.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing.Template;
-using Microsoft.Extensions.Options;
 using System.Text;
 using System.Threading.Tasks;
 

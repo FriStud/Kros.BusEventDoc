@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Kros.EventBusDoc.Generator.BusentScour.Document.InternStructure
+namespace Kros.EventBusDoc.Generator.BusentScour.Document
 {
     public class DocFormat
     {

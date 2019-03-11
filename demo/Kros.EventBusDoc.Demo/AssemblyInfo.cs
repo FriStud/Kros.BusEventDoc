@@ -4,9 +4,9 @@ using Kros.EventBusDoc.Demo.Services.Commands;
 using Kros.EventBusDoc.Demo.Services.Events;
 using Kros.EventBusDoc.Generator.BusentAnnotation;
 
-[assembly: EventBusCommandSender(EventType = typeof(IEmailSender))]
-[assembly: BusEvent(EventType = typeof(IOrderNotificationEvent))]
-[assembly: BusEvent(EventType = typeof(IMessageEvent))]
-[assembly: EventBusCommandConsumer(EventType = typeof(IMessageCommand))]
-[assembly: EventBusCommandConsumer(EventType = typeof(CancelOrderCommand))]
+[assembly: EventBusCommand(EventType = typeof(IEmailSender))]
+[assembly: EventBusEvent(EventType = typeof(IOrderNotificationEvent))]
+[assembly: EventBusEvent(EventType = typeof(IMessageEvent))]
+[assembly: EventBusConsumer(EventType = typeof(IMessageCommand))]
+[assembly: EventBusConsumer(EventType = typeof(CancelOrderCommand))]
 

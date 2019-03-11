@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Kros.EventBusDoc.Generator.BusentScour.Interfaces
+namespace Kros.EventBusDoc.Generator.BusentScour.Scourers
 {
     public interface IAttributeFetcher
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Kros.EventBusDoc.Generator.BusentScour.Interfaces
+namespace Kros.EventBusDoc.Generator.BusentScour.Scourers
 {
     /// <summary>
     /// Contract for looking for the consumers and the publishers.

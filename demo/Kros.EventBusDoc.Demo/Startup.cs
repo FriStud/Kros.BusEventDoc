@@ -1,5 +1,4 @@
 using Kros.EventBusDoc.Generator.Middleware;
-using Kros.EventBusDoc.Generator.Middleware.Extensions;
 using Kros.EventBusDoc.UI.Middleware.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

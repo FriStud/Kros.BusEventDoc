@@ -1,5 +1,4 @@
 ﻿using Kros.EventBusDoc.Generator.BusentAnnotation;
-using Kros.EventBusDoc.Generator.BusentScour.Interfaces;
 using System.Collections.Generic;
 using System.Reflection;
 

@@ -1,12 +1,10 @@
 ﻿using Kros.EventBusDoc.Generator.BusentScour.Generators;
-using Kros.EventBusDoc.Generator.BusentScour.Interfaces;
 using Kros.EventBusDoc.Generator.BusentScour.Scourers;
 using Kros.EventBusDoc.Generator.BusentScour.XmlReader;
-using Kros.EventBusDoc.Generator.Middleware.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Kros.EventBusDoc.Generator.Middleware.Extensions
+namespace Kros.EventBusDoc.Generator.Middleware
 {
     public static class ServiceCollectionExtensions
     {

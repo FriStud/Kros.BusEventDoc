@@ -12,6 +12,5 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Scourers
         Assembly ExecutionAssembly { get; }
 
         ScourerResult Scour();
-
     }
 }

@@ -4,6 +4,10 @@ using System.IO;
 
 namespace Kros.EventBusDoc.UI.Middleware.Options
 {
+    /// <summary>
+    /// Let's user define the basic options interacting with UI
+    /// and routing among endpoints via ConfigObject
+    /// </summary>
     public class EventBusDocUIOptions
     {
         public Func<Stream> IndexStream { get; set; } = () => "index.html".GetEmbeddedFileStream();
@@ -26,11 +30,7 @@ namespace Kros.EventBusDoc.UI.Middleware.Options
         /// <summary>
         /// Gets the JavaScript config object, represented as JSON, that will be passed to the UI
         /// </summary>
-        public ConfigObject ConfigObject { get; internal set; }
+        public ConfigObject ConfigObject { get; } = new ConfigObject();
 
-        public EventBusDocUIOptions()
-        {
-            ConfigObject = new ConfigObject();
-        }
     }
 }

@@ -46,6 +46,12 @@
             One or more EvntBusDoc JSON endpoints (url and name) to power the UI
             </summary>
         </member>
+        <member name="T:Kros.EventBusDoc.UI.Middleware.Options.EventBusDocUIOptions">
+            <summary>
+            Let's user define the basic options interacting with UI
+            and routing among endpoints via ConfigObject
+            </summary>
+        </member>
         <member name="P:Kros.EventBusDoc.UI.Middleware.Options.EventBusDocUIOptions.RoutePrefix">
             <summary>
             Gets or sets a route prefix for accessing the eventbusdoc-ui

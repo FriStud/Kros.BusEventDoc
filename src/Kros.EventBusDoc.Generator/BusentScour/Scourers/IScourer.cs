@@ -10,11 +10,8 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Scourers
     public interface IScourer
     {
         Assembly ExecutionAssembly { get; }
-        IList<Type> Events { get; }
-        IList<Type> Commands { get; }
-        IList<Type> Consumes { get; }
-        IList<Type> ResolvedTypes { get; }
 
-        void Scour();
+        ScourerResult Scour();
+
     }
 }

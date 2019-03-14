@@ -14,21 +14,22 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Scourers
         /// Scour with declarative principle
         /// </summary>
         /// <param name="enumerable"></param>
-        protected override void ScourCore(IEnumerable<EventBusBaseAttribute> enumerable)
+        /// <param name="scourerResult"></param>
+        protected override void ScourCore(IEnumerable<EventBusBaseAttribute> enumerable, ScourerResult scourerResult)
         {
             foreach (var item in enumerable.Where(t => t.GetType() != typeof(EventBusAssemblyScourAttribute)))
             {
                 if (item is EventBusEventAttribute)
                 {
-                    Events.Add(item.EventType);
+                    scourerResult.Events.Add(item.EventType);
                 }
                 else if (item is EventBusCommandAttribute)
                 {
-                    Commands.Add(item.EventType);
+                    scourerResult.Commands.Add(item.EventType);
                 }
                 else if (item is EventBusConsumerAttribute)
                 {
-                    Consumes.Add(item.EventType);
+                    scourerResult.Consumes.Add(item.EventType);
                 }
             }
         }

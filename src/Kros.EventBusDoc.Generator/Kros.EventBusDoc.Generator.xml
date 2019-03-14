@@ -25,11 +25,12 @@
             Service settings.
             </summary>
         </member>
-        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.DeclarativeScourer.ScourCore(System.Collections.Generic.IEnumerable{Kros.EventBusDoc.Generator.BusentAnnotation.EventBusBaseAttribute})">
+        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.DeclarativeScourer.ScourCore(System.Collections.Generic.IEnumerable{Kros.EventBusDoc.Generator.BusentAnnotation.EventBusBaseAttribute},Kros.EventBusDoc.Generator.BusentScour.Scourers.ScourerResult)">
             <summary>
             Scour with declarative principle
             </summary>
             <param name="enumerable"></param>
+            <param name="scourerResult"></param>
         </member>
         <member name="T:Kros.EventBusDoc.Generator.BusentScour.Scourers.IScourer">
             <summary>

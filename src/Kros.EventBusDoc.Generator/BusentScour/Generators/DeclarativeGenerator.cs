@@ -17,7 +17,6 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Generators
         private readonly IXmlDocumentationReader _xmlReader;
         private DocFormat _document;
         private ServiceSettings Settings { get; set; } = new ServiceSettings();
-
         public DocFormat Document
         {
             get
@@ -41,22 +40,22 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Generators
                 MiddleWareVersion = "v1.0"
             };
 
-            _scourer.Scour();
+            var _scourerResult = _scourer.Scour();
             _xmlReader.Load(_scourer.ExecutionAssembly.GetDocumentPath());
 
-            format.Service = GenerateService();
-            format.Definitions = GenerateAllDefinitions().ToList();
-            format.Types = GenerateAllTypes().ToList();
+            format.Service = GenerateService(_scourerResult);
+            format.Definitions = GenerateAllDefinitions(_scourerResult).ToList();
+            format.Types = GenerateAllTypes(_scourerResult).ToList();
 
             return format;
         }
 
-        private Service GenerateService() =>
+        private Service GenerateService(ScourerResult scourerResult) =>
             new Service
             {
-                Events = from type in _scourer.Events select type.Name,
-                Commands = from type in _scourer.Commands select type.Name,
-                Consumes = from type in _scourer.Consumes select type.Name,
+                Events = from type in scourerResult.Events select type.Name,
+                Commands = from type in scourerResult.Commands select type.Name,
+                Consumes = from type in scourerResult.Consumes select type.Name,
 
                 Version = Settings.Version,
                 Name = Settings.Name,
@@ -111,16 +110,16 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Generators
             return messDef;
         }
 
-        private IEnumerable<MessageDefinition> GenerateAllDefinitions()
+        private IEnumerable<MessageDefinition> GenerateAllDefinitions(ScourerResult scourerResult)
         {
             var definitionList = new List<MessageDefinition>();
 
-            foreach (var item in _scourer.Events)
+            foreach (var item in scourerResult.Events)
             {
                 definitionList.Add((MessageDefinition)GetDefinition(item, MessageType.Event));
             }
 
-            foreach (var item in _scourer.Commands)
+            foreach (var item in scourerResult.Commands)
             {
                 definitionList.Add((MessageDefinition)GetDefinition(item, MessageType.Command));
             }
@@ -128,11 +127,11 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Generators
             return definitionList;
         }
 
-        private IEnumerable<DescriptiveType> GenerateAllTypes()
+        private IEnumerable<DescriptiveType> GenerateAllTypes(ScourerResult scourerResult)
         {
             var typeList = new List<DescriptiveType>();
 
-            foreach (var item in _scourer.ResolvedTypes)
+            foreach (var item in scourerResult.ResolvedTypes)
             {
                 typeList.Add((DescriptiveType)GetDefinition(item));
             }

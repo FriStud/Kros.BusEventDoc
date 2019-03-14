@@ -22,98 +22,83 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Scourers
 
         public Assembly ExecutionAssembly { get => _attributeFetcher.ExecutionAssembly; }
 
-        public IList<Type> Events { get; } = new List<Type>();
-
-        public IList<Type> Commands { get; } = new List<Type>();
-
-        public IList<Type> Consumes { get; } = new List<Type>();
-
-        public IList<Type> ResolvedTypes { get; } = new List<Type>();
-
         public IList<Type> IgnoreTypes { get; } = new List<Type>();
 
         #endregion Properties
 
         #region Member Functions
 
-        public void Scour()
+        public ScourerResult Scour()
         {
-            Clear();
-            ScourCore(_attributeFetcher.FetchAssemblyAttributes());
-            ResolveAllTypes();
+            var _scourerResult = new ScourerResult();
+            ScourCore(_attributeFetcher.FetchAssemblyAttributes(), _scourerResult);
+            ResolveAllTypes(_scourerResult);
+            return _scourerResult;
         }
 
-        private void Clear()
-        {
-            Events.Clear();
-            Commands.Clear();
-            Consumes.Clear();
-            ResolvedTypes.Clear();
-        }
+        protected abstract void ScourCore(IEnumerable<EventBusBaseAttribute> enumerable, ScourerResult scourerResult);
 
-        protected abstract void ScourCore(IEnumerable<EventBusBaseAttribute> enumerable);
-
-        private void ResolveAllTypes()
+        private void ResolveAllTypes(ScourerResult scourerResult)
         {
-            foreach (var typ in Events)
+            foreach (var typ in scourerResult.Events)
             {
-                RegisterAllTypes(typ);
+                RegisterAllTypes(typ, scourerResult);
             }
 
-            foreach (var typ in Commands)
+            foreach (var typ in scourerResult.Commands)
             {
-                RegisterAllTypes(typ);
+                RegisterAllTypes(typ, scourerResult);
             }
 
-            foreach (var typ in Consumes)
+            foreach (var typ in scourerResult.Consumes)
             {
-                RegisterAllTypes(typ);
+                RegisterAllTypes(typ, scourerResult);
             }
         }
 
-        private void RegisterAllTypes(Type type)
+        private void RegisterAllTypes(Type type, ScourerResult scourerResult)
         {
-            if (!OmitThisType(type))
+            if (!OmitThisType(type, scourerResult))
             {
                 if (type.IsGenericType)
                 {
-                    HandleGenericType(type);
+                    HandleGenericType(type, scourerResult);
                 }
                 else if (type.IsArray)
                 {
-                    RegisterAllTypes(type.GetElementType());
+                    RegisterAllTypes(type.GetElementType(), scourerResult);
                 }
                 else
                 {
-                    RegisterTypeWithProperties(type);
+                    RegisterTypeWithProperties(type, scourerResult);
                 }
             }
         }
 
-        private void RegisterTypeWithProperties(Type type)
+        private void RegisterTypeWithProperties(Type type, ScourerResult scourerResult)
         {
-            RegisterType(type);
+            RegisterType(type, scourerResult);
             foreach (var proper in type.GetProperties())
             {
-                RegisterAllTypes(proper.PropertyType);
+                RegisterAllTypes(proper.PropertyType, scourerResult);
             }
         }
 
-        private void HandleGenericType(Type type)
+        private void HandleGenericType(Type type, ScourerResult scourerResult)
         {
             if (!IsFromSystemAndGeneric(type))
             {
-                RegisterTypeWithProperties(type);
+                RegisterTypeWithProperties(type, scourerResult);
             }
 
             foreach (var arg in type.GetGenericArguments())
             {
-                RegisterAllTypes(arg);
+                RegisterAllTypes(arg, scourerResult);
             }
         }
 
-        private bool OmitThisType(Type type) =>
-            (type.IsPrimitive || IsRegistered(type) ||
+        private bool OmitThisType(Type type, ScourerResult scourerResult) =>
+            (type.IsPrimitive || IsRegistered(type, scourerResult) ||
             (type.BaseType is null && !type.IsInterface) || (type == typeof(string)))
             ? true
             : false;
@@ -121,11 +106,11 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Scourers
         private bool IsFromSystemAndGeneric(Type type) =>
             type.AssemblyQualifiedName.StartsWith("System.Collections.Generic");
 
-        private void RegisterType(Type propType) =>
-            ResolvedTypes.Add(propType);
+        private void RegisterType(Type propType, ScourerResult scourerResult) =>
+            scourerResult.ResolvedTypes.Add(propType);
 
-        private bool IsRegistered(Type type) =>
-            ResolvedTypes.Contains(type);
+        private bool IsRegistered(Type type, ScourerResult scourerResult) =>
+            scourerResult.ResolvedTypes.Contains(type);
 
         protected EventBusAssemblyScourAttribute HasAssemblyScourInstruction() =>
             ExecutionAssembly.GetCustomAttribute<EventBusAssemblyScourAttribute>();

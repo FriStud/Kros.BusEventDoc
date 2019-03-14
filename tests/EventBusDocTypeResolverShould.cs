@@ -46,9 +46,9 @@ namespace Kros.EvenBusDoc.Generator.Test
                 typeof(EventFor2)
             };
 
-            _scourer.Scour();
+            var result = _scourer.Scour();
 
-            eventsList.Should().BeEquivalentTo(_scourer.Events);
+            eventsList.Should().BeEquivalentTo(result.Events);
         }
 
         [Fact]
@@ -58,9 +58,9 @@ namespace Kros.EvenBusDoc.Generator.Test
                 typeof(ISendCommand)
             };
 
-            _scourer.Scour();
+            var result = _scourer.Scour();
 
-            commandList.Should().BeEquivalentTo(_scourer.Commands);
+            commandList.Should().BeEquivalentTo(result.Commands);
         }
 
         [Fact]
@@ -71,9 +71,9 @@ namespace Kros.EvenBusDoc.Generator.Test
                 typeof(IConsumeOne)
             };
 
-            _scourer.Scour();
+            var result = _scourer.Scour();
 
-            commandList.Should().BeEquivalentTo(_scourer.Consumes);
+            commandList.Should().BeEquivalentTo(result.Consumes);
         }
 
         [Fact]
@@ -94,9 +94,9 @@ namespace Kros.EvenBusDoc.Generator.Test
                 typeof(EventFor2),
             };
 
-            _scourer.Scour();
+            var result = _scourer.Scour();
 
-            subjectList.Should().BeEquivalentTo(_scourer.ResolvedTypes);
+            subjectList.Should().BeEquivalentTo(result.ResolvedTypes);
         }
 
         #endregion Tests For Collections Events, Commands, ResolvedTypes

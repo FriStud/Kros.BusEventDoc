@@ -152,7 +152,7 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Generators
             set.Converters.Add(new StringEnumConverter());
 
             return JsonConvert.SerializeObject(structure,
-                serializerSettings ?? new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+                serializerSettings ?? set);
         }
     }
 }

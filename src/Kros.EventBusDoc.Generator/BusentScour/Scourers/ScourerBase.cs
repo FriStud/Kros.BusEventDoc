@@ -30,7 +30,7 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Scourers
 
         public IList<Type> ResolvedTypes { get; } = new List<Type>();
 
-        public IList<Type> IgnoreTypes { get; } = new List<Type>();
+        private IList<Type> _IgnoreTypes { get; } = new List<Type> { typeof(DateTime), typeof(decimal)};
 
         #endregion Properties
 
@@ -112,8 +112,10 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Scourers
             }
         }
 
+        private bool IsIgnoreType(Type type) => _IgnoreTypes.Contains(type);
+
         private bool OmitThisType(Type type) =>
-            (type.IsPrimitive || IsRegistered(type) ||
+            (type.IsPrimitive || IsRegistered(type) || IsIgnoreType(type) ||
             (type.BaseType is null && !type.IsInterface) || (type == typeof(string)))
             ? true
             : false;

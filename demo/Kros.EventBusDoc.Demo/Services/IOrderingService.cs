@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kros.EventBusDoc.Demo.Services
+namespace Kros.EventBusDoc.Demo.Contracts
 {
     public interface IOrderingService
     {

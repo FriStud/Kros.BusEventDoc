@@ -8,7 +8,7 @@ using Kros.EventBusDoc.Demo.Products;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace Kros.EventBusDoc.Demo.Services
+namespace Kros.EventBusDoc.Demo.Contracts
 {
     public class OrderingService : IOrderingService
     {

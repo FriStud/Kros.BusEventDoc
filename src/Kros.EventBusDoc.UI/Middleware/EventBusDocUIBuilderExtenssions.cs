@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using System;
 
-namespace Kros.EventBusDoc.UI.Middleware.Extensions
+namespace Kros.EventBusDoc.UI.Middleware
 {
     public static class EventBusDocUIBuilderExtenssions
     {

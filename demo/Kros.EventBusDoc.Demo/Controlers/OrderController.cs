@@ -1,5 +1,5 @@
-﻿using Kros.EventBusDoc.Demo.Services;
-using Kros.EventBusDoc.Demo.Services.Commands;
+﻿using Kros.EventBusDoc.Demo.Contracts;
+using Kros.EventBusDoc.Demo.Contracts.Commands;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Net;
@@ -26,7 +26,7 @@ namespace Kros.EventBusDoc.Demo.Controlers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> CancelOrderAsync([FromBody]CancelOrderCommand command, [FromHeader(Name = "x-requestid")] string requestId)
         {
-            return Ok();
+            return  Ok();
         }
 
     }

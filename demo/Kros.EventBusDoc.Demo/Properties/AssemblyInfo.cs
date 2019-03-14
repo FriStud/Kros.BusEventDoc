@@ -1,7 +1,7 @@
-﻿using Kros.EventBusDoc.Demo.EmailProvider;
+﻿using Kros.EventBusDoc.Demo.Contracts.Commands;
+using Kros.EventBusDoc.Demo.Contracts.Events;
+using Kros.EventBusDoc.Demo.EmailProvider;
 using Kros.EventBusDoc.Demo.Notifications;
-using Kros.EventBusDoc.Demo.Services.Commands;
-using Kros.EventBusDoc.Demo.Services.Events;
 using Kros.EventBusDoc.Generator.BusentAnnotation;
 
 [assembly: EventBusCommand(EventType = typeof(IEmailSender))]

@@ -7,6 +7,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Develop\BusEventDoc-FriStud\Kros.BusEventDoc\demo\Kros.EventBusDoc.Demo2\Kros.EventBusDoc.Demo2.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Kros.EventBusDoc.Demo.MessageService\Kros.EventBusDoc.Demo.Services.csproj" />
     <ProjectReference Include="..\..\src\Kros.EventBusDoc.Generator\Kros.EventBusDoc.Generator.csproj" />
+    <ProjectReference Include="..\Kros.EventBusDoc.Demo.MessageService\Kros.EventBusDoc.Demo.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

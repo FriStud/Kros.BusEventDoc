@@ -1,9 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Kros.EventBusDoc.Demo.Services</AssemblyName>
-    <RootNamespace>Kros.EventBusDoc.Demo.Services</RootNamespace>
-  </PropertyGroup>
-
-</Project>

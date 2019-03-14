@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kros.EventBusDoc.Demo.Services.Interfaces
+namespace Kros.EventBusDoc.Demo.Contracts.Interfaces
 {
     /// <summary>
     /// </summary>

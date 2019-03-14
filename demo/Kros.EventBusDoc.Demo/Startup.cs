@@ -1,12 +1,12 @@
 using Kros.EventBusDoc.Generator.Middleware;
-using Kros.EventBusDoc.UI.Middleware.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Kros.EventBusDoc.Demo.Extensions;
-using Kros.EventBusDoc.Demo.Services;
+using Kros.EventBusDoc.Demo.Contracts;
 using Kros.EventBusDoc.Generator.BusentScour.Generators;
+using Kros.EventBusDoc.UI.Middleware;
 
 namespace Kros.EventBusDoc.Demo
 {
@@ -57,7 +57,7 @@ namespace Kros.EventBusDoc.Demo
 
             app.UseEventBusDocUI(c =>
             {
-                c.EventBusDocEndPoint("v1/busent.json", "Demo v1");
+                c.EventBusDocEndPoint("http://localhost:5001/busent/v1/busent.json", "Demo v1");
                 c.EventBusDocEndPoint("http://localhost:5000/busent/v2/busent.json", "Demo v2");
             });
         }

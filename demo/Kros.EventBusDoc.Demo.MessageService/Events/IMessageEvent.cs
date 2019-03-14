@@ -1,6 +1,6 @@
-﻿using Kros.EventBusDoc.Demo.Services.Interfaces;
+﻿using Kros.EventBusDoc.Demo.Contracts.Interfaces;
 
-namespace Kros.EventBusDoc.Demo.Services.Events
+namespace Kros.EventBusDoc.Demo.Contracts.Events
 {
     /// <summary>
     /// Message event used ammong two correspondent.

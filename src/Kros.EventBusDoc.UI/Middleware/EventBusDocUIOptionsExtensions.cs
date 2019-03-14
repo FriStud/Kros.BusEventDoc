@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kros.EventBusDoc.UI.Middleware.Extensions
+namespace Kros.EventBusDoc.UI.Middleware
 {
     public static class EventBusDocUIOptionsExtensions
     {

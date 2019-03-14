@@ -12,7 +12,7 @@ namespace Kros.EventBusDoc.Demo.Extensions
     {
         /// <summary>
         /// Adds MVC services to the specified <see cref="IServiceCollection" /> for Web API.
-        /// This is a slimmed down version of <see cref="MvcServiceCollectionExtensions.AddMvc"/>
+        /// This is a slimmed down version of <see cref="MvcServiceCollectionExtensions.AddMvc(IServiceCollection)"/>
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to add services to.</param>
         /// <returns>An <see cref="IMvcBuilder"/> that can be used to further configure the MVC services.</returns>

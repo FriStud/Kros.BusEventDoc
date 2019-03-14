@@ -75,8 +75,7 @@ namespace Kros.EventBusDoc.UI.Middleware
             {
                 { "%(DocumentTitle)", _options.DocumentTitle },
                 { "%(HeadContent)", _options.HeadContent },
-                { "%(ConfigObject)", SerializeToJson(_options.ConfigObject) },
-                { "%(OAuthConfigObject)", SerializeToJson(_options.OAuthConfigObject) }
+                { "%(ConfigObject)", SerializeToJson(_options.ConfigObject) }
             };
         }
 

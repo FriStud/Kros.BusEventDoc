@@ -7,19 +7,21 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Develop\bus\demo\Kros.EventBusDoc.Demo\Kros.EventBusDoc.Demo.xml</DocumentationFile>
-    <NoWarn>1701;1702;1591</NoWarn>
+    <NoWarn>1701;1702;1591;1998</NoWarn>
   </PropertyGroup>
 
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="System.ServiceModel.Web" Version="1.0.0" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Kros.EventBusDoc.Generator\Kros.EventBusDoc.Generator.csproj" />
     <ProjectReference Include="..\..\src\Kros.EventBusDoc.UI\Kros.EventBusDoc.UI.csproj" />
+    <ProjectReference Include="..\Kros.EventBusDoc.Demo.Contracts\Kros.EventBusDoc.Demo.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

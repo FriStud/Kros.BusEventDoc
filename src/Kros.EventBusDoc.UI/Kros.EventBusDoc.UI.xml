@@ -12,7 +12,7 @@
             <param name="specific"></param>
             <returns>Stream of file otherwise null</returns>
         </member>
-        <member name="M:Kros.EventBusDoc.UI.Middleware.Extensions.EventBusDocUIOptionsExtensions.InjectStylesheet(Kros.EventBusDoc.UI.Middleware.Options.EventBusDocUIOptions,System.String,System.String)">
+        <member name="M:Kros.EventBusDoc.UI.Middleware.EventBusDocUIOptionsExtensions.InjectStylesheet(Kros.EventBusDoc.UI.Middleware.Options.EventBusDocUIOptions,System.String,System.String)">
             <summary>
             Injects additional CSS stylesheets into the index.html page
             </summary>
@@ -20,7 +20,7 @@
             <param name="path">A path to the stylesheet - i.e. the link "href" attribute</param>
             <param name="media">The target media - i.e. the link "media" attribute</param>
         </member>
-        <member name="M:Kros.EventBusDoc.UI.Middleware.Extensions.EventBusDocUIOptionsExtensions.InjectJavascript(Kros.EventBusDoc.UI.Middleware.Options.EventBusDocUIOptions,System.String,System.String)">
+        <member name="M:Kros.EventBusDoc.UI.Middleware.EventBusDocUIOptionsExtensions.InjectJavascript(Kros.EventBusDoc.UI.Middleware.Options.EventBusDocUIOptions,System.String,System.String)">
             <summary>
             Injects additional Javascript files into the index.html page
             </summary>
@@ -28,13 +28,29 @@
             <param name="path">A path to the javascript - i.e. the script "src" attribute</param>
             <param name="type">The script type - i.e. the script "type" attribute</param>
         </member>
-        <member name="M:Kros.EventBusDoc.UI.Middleware.Extensions.EventBusDocUIOptionsExtensions.EventBusDocEndPoint(Kros.EventBusDoc.UI.Middleware.Options.EventBusDocUIOptions,System.String,System.String)">
+        <member name="M:Kros.EventBusDoc.UI.Middleware.EventBusDocUIOptionsExtensions.EventBusDocEndPoint(Kros.EventBusDoc.UI.Middleware.Options.EventBusDocUIOptions,System.String,System.String)">
             <summary>
             Adds Swagger JSON endpoints. Can be fully-qualified or relative to the UI page
             </summary>
             <param name="options"></param>
             <param name="url">Can be fully qualified or relative to the current host</param>
             <param name="name">The description that appears in the document selector drop-down</param>
+        </member>
+        <member name="T:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject">
+            <summary>
+            Used for data to pass to UI, configuration
+            </summary>
+        </member>
+        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.Urls">
+            <summary>
+            One or more EvntBusDoc JSON endpoints (url and name) to power the UI
+            </summary>
+        </member>
+        <member name="T:Kros.EventBusDoc.UI.Middleware.Options.EventBusDocUIOptions">
+            <summary>
+            Let's user define the basic options interacting with UI
+            and routing among endpoints via ConfigObject
+            </summary>
         </member>
         <member name="P:Kros.EventBusDoc.UI.Middleware.Options.EventBusDocUIOptions.RoutePrefix">
             <summary>
@@ -56,68 +72,19 @@
             Gets the JavaScript config object, represented as JSON, that will be passed to the UI
             </summary>
         </member>
-        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.Urls">
+        <member name="T:Kros.EventBusDoc.UI.Middleware.Options.UrlDescriptor">
             <summary>
-            One or more Swagger JSON endpoints (url and name) to power the UI
+            Description for endpoint with url and name
             </summary>
         </member>
-        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.DeepLinking">
+        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.UrlDescriptor.Url">
             <summary>
-            If set to true, enables deep linking for tags and operations
+            Endpoint's Url
             </summary>
         </member>
-        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.DisplayOperationId">
+        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.UrlDescriptor.Name">
             <summary>
-            Controls the display of operationId in operations list
-            </summary>
-        </member>
-        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.DefaultModelsExpandDepth">
-            <summary>
-            The default expansion depth for models (set to -1 completely hide the models)
-            </summary>
-        </member>
-        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.DefaultModelExpandDepth">
-            <summary>
-            The default expansion depth for the model on the model-example section
-            </summary>
-        </member>
-        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.DisplayRequestDuration">
-            <summary>
-            Controls the display of the request duration (in milliseconds) for Try-It-Out requests
-            </summary>
-        </member>
-        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.Filter">
-            <summary>
-            If set, enables filtering. The top bar will show an edit box that you can use to filter the tagged operations
-            that are shown. Can be an empty string or specific value, in which case filtering will be enabled using that
-            value as the filter expression. Filtering is case sensitive matching the filter expression anywhere inside the tag
-            </summary>
-        </member>
-        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.MaxDisplayedTags">
-            <summary>
-            If set, limits the number of tagged operations displayed to at most this many. The default is to show all operations
-            </summary>
-        </member>
-        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.ShowExtensions">
-            <summary>
-            Controls the display of vendor extension (x-) fields and values for Operations, Parameters, and Schema
-            </summary>
-        </member>
-        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.ShowCommonExtensions">
-            <summary>
-            Controls the display of extensions (pattern, maxLength, minLength, maximum, minimum) fields and values for Parameters
-            </summary>
-        </member>
-        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.OAuth2RedirectUrl">
-            <summary>
-            OAuth redirect URL
-            </summary>
-        </member>
-        <member name="P:Kros.EventBusDoc.UI.Middleware.Options.ConfigObject.ValidatorUrl">
-            <summary>
-            By default, Swagger-UI attempts to validate specs against swagger.io's online validator.
-            You can use this parameter to set a different validator URL, for example for locally deployed validators (Validator Badge).
-            Setting it to null will disable validation
+            Endpoint's name
             </summary>
         </member>
     </members>

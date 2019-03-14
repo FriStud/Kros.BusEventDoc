@@ -1,12 +1,12 @@
 using Kros.EventBusDoc.Generator.Middleware;
-using Kros.EventBusDoc.Generator.Middleware.Extensions;
-using Kros.EventBusDoc.UI.Middleware.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Kros.EventBusDoc.Demo.Extensions;
+using Kros.EventBusDoc.Demo.Contracts;
+using Kros.EventBusDoc.Generator.BusentScour.Generators;
+using Kros.EventBusDoc.UI.Middleware;
 
 namespace Kros.EventBusDoc.Demo
 {
@@ -19,22 +19,15 @@ namespace Kros.EventBusDoc.Demo
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            services.AddWebApi();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddHttpClient<IOrderingService, OrderingService>();
 
             services.AddEventBusDocGen(c => c.EventBusDoc("v1", new Info { Version = "v1", Title = "Demo" }));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -44,17 +37,29 @@ namespace Kros.EventBusDoc.Demo
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            // app.UseCookiePolicy();
-
             app.UseMvc();
-            app.UseEventBusDoc();
-            app.UseEventBusDocUI(c => { c.EventBusDocEndPoint("v1/busent.json", "Demo v1"); });
+
+            app.UseCors("MyPolicy");
+            app.UseEventBusDoc(ebd =>
+            {
+                ebd.ServiceSettings = new ServiceSettings
+                {
+                    Name = "Main Demo 1",
+                    Version = "demo v 1.2",
+                    Description = "Main Demo 1 for demo puposes"
+                };
+            });
+
+            app.UseEventBusDocUI(c =>
+            {
+                c.EventBusDocEndPoint("http://localhost:5001/busent/v1/busent.json", "Demo v1");
+                c.EventBusDocEndPoint("http://localhost:5000/busent/v2/busent.json", "Demo v2");
+            });
         }
     }
 }

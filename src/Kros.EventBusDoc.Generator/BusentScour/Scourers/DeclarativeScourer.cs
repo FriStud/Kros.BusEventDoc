@@ -1,8 +1,6 @@
 ﻿using Kros.EventBusDoc.Generator.BusentAnnotation;
-using Kros.EventBusDoc.Generator.BusentScour.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
-using Kros.EventBusDoc.Generator.Helpers;
 
 namespace Kros.EventBusDoc.Generator.BusentScour.Scourers
 {
@@ -20,15 +18,15 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Scourers
         {
             foreach (var item in enumerable.Where(t => t.GetType() != typeof(EventBusAssemblyScourAttribute)))
             {
-                if (item is BusEvent)
+                if (item is EventBusEventAttribute)
                 {
                     Events.Add(item.EventType);
                 }
-                else if (item is EventBusCommandSenderAttribute)
+                else if (item is EventBusCommandAttribute)
                 {
                     Commands.Add(item.EventType);
                 }
-                else if (item is EventBusConsumerAttribute || item is EventBusCommandConsumerAttribute)
+                else if (item is EventBusConsumerAttribute)
                 {
                     Consumes.Add(item.EventType);
                 }

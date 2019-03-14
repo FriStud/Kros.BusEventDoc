@@ -20,9 +20,9 @@
             Meant for static assigned to scour files
             </summary>
         </member>
-        <member name="T:Kros.EventBusDoc.Generator.BusentScour.Interfaces.IScourer">
+        <member name="T:Kros.EventBusDoc.Generator.BusentScour.Generators.ServiceSettings">
             <summary>
-            Contract for looking for the consumers and the publishers.
+            Service settings.
             </summary>
         </member>
         <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.DeclarativeScourer.ScourCore(System.Collections.Generic.IEnumerable{Kros.EventBusDoc.Generator.BusentAnnotation.EventBusBaseAttribute})">
@@ -31,40 +31,10 @@
             </summary>
             <param name="enumerable"></param>
         </member>
-        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.RelativeScourer.FindServices(Kros.EventBusDoc.Generator.BusentAnnotation.EventBusAssemblyScourAttribute)">
+        <member name="T:Kros.EventBusDoc.Generator.BusentScour.Scourers.IScourer">
             <summary>
-            Finds all types that are registerd/tagged bythe specific attribute
+            Contract for looking for the consumers and the publishers.
             </summary>
-            <param name="assemblyAttribute">Assembly attribute</param>
-        </member>
-        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.RelativeScourer.Findconsumers(Kros.EventBusDoc.Generator.BusentAnnotation.EventBusAssemblyScourAttribute)">
-            <summary>
-            Finds all types that are register/tagged by the specific attribute
-            </summary>
-            <param name="assemblyAttribute"></param>
-        </member>
-        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.RelativeScourer.FindByAttributeTypeIn(System.Type,System.String)">
-            <summary>
-            Finds only tagged types, if defined pattern then in specify otherwise scour all assembly
-            </summary>
-            <param name="attributeType"></param>
-            <param name="pattern"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.RelativeScourer.MatchSserviceAndConsumer">
-            <summary>
-            Search for the service and their consumers
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Kros.EventBusDoc.Generator.BusentScour.Scourers.RelativeScourer.HasPublishTagWithType(System.Type,System.Type)">
-            <summary>
-            Checks if the the tagged methods by EType
-            has the appropriate published type.
-            </summary>
-            <param name="publisher"></param>
-            <param name="pulished"></param>
-            <returns></returns>
         </member>
         <member name="F:Kros.EventBusDoc.Generator.BusentScour.XmlReader.XmlDocumentationType.Property">
             <summary>
@@ -101,13 +71,13 @@
             <param name="genericArguments"></param>
             <returns></returns>
         </member>
-        <member name="M:Kros.EventBusDoc.Generator.Middleware.Extensions.EventBusDocGenOptionExtensions.EventBusDoc(Kros.EventBusDoc.Generator.BusentScour.Generators.EventBusDocGenOptions,System.String,Kros.EventBusDoc.Generator.Middleware.Info)">
+        <member name="M:Kros.EventBusDoc.Generator.Middleware.EventBusDocGenOptionExtensions.EventBusDoc(Kros.EventBusDoc.Generator.BusentScour.Generators.EventBusDocGenOptions,System.String,Kros.EventBusDoc.Generator.BusentScour.Generators.Info)">
             <summary>
-            Define one or more documents to be created by the generator
+            Define document to be created by the generator
             </summary>
             <param name="genOptions"></param>
             <param name="name">A URI-friendly name that uniquely identifies the document</param>
-            <param name="info">Global metadata to be included in the Swagger output</param>
+            <param name="info">Global metadata to be included in the event bus doc output</param>
         </member>
     </members>
 </doc>

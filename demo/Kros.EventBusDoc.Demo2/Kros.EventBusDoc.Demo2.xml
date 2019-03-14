@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kros.EventBusDoc.Demo2</name>
+    </assembly>
+    <members>
+        <member name="M:Kros.EventBusDoc.Demo2.Extensions.ServiceCollectionExtensions.AddWebApi(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds MVC services to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> for Web API.
+            This is a slimmed down version of <see cref="M:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc(Microsoft.Extensions.DependencyInjection.IServiceCollection)"/>
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to add services to.</param>
+            <returns>An <see cref="T:Microsoft.Extensions.DependencyInjection.IMvcBuilder"/> that can be used to further configure the MVC services.</returns>
+        </member>
+    </members>
+</doc>

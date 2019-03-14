@@ -1,5 +1,4 @@
-﻿using Kros.EventBusDoc.Generator.Middleware;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Kros.EventBusDoc.Generator.BusentScour.Generators
 {

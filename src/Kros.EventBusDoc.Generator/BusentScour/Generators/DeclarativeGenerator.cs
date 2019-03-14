@@ -1,8 +1,7 @@
-﻿using Kros.EventBusDoc.Generator.BusentScour.Document.InternStructure;
-using Kros.EventBusDoc.Generator.BusentScour.Interfaces;
+﻿using Kros.EventBusDoc.Generator.BusentScour.Document;
+using Kros.EventBusDoc.Generator.BusentScour.Scourers;
 using Kros.EventBusDoc.Generator.BusentScour.XmlReader;
 using Kros.EventBusDoc.Generator.Helpers;
-using Kros.EventBusDoc.Generator.Middleware.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -17,12 +16,13 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Generators
         private readonly IScourer _scourer;
         private readonly IXmlDocumentationReader _xmlReader;
         private DocFormat _document;
+        private ServiceSettings Settings { get; set; } = new ServiceSettings();
 
         public DocFormat Document
         {
             get
             {
-                _document = GenerateFormat("natvrdo");
+                _document = GenerateFormat();
                 return _document;
             }
             set { _document = value; }
@@ -34,11 +34,11 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Generators
             _xmlReader = xmlReader;
         }
 
-        public DocFormat GenerateFormat(string apiName)
+        public DocFormat GenerateFormat()
         {
             var format = new DocFormat
             {
-                MiddleWareVersion = apiName
+                MiddleWareVersion = "v1.0"
             };
 
             _scourer.Scour();
@@ -58,9 +58,9 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Generators
                 Commands = from type in _scourer.Commands select type.Name,
                 Consumes = from type in _scourer.Consumes select type.Name,
 
-                Version = "v0",
-                Name = "Service",
-                Description = "No definition"
+                Version = Settings.Version,
+                Name = Settings.Name,
+                Description = Settings.Description
             };
 
         private DescriptiveObject GetDefinition(Type item, MessageType eMessageType = MessageType.None)
@@ -140,9 +140,10 @@ namespace Kros.EventBusDoc.Generator.BusentScour.Generators
             return typeList;
         }
 
-        public string Serialize(JsonSerializerSettings serializerSettings = null)
+        public string Serialize(ServiceSettings serviceSettings, JsonSerializerSettings serializerSettings = null)
         {
-            var structure = GenerateFormat("natvrdo");
+            Settings = serviceSettings;
+            var structure = GenerateFormat();
 
             var set = new JsonSerializerSettings
             {

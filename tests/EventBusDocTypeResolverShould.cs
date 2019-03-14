@@ -1,7 +1,6 @@
 using FluentAssertions;
 using Kros.EvenBusDoc.Generator.Test.resources.Types;
 using Kros.EventBusDoc.Generator.BusentAnnotation;
-using Kros.EventBusDoc.Generator.BusentScour.Interfaces;
 using Kros.EventBusDoc.Generator.BusentScour.Scourers;
 using NSubstitute;
 using System;
@@ -22,16 +21,14 @@ namespace Kros.EvenBusDoc.Generator.Test
 
         private IAttributeFetcher ConfigureDummyFetcher()
         {
-
             var fetcher = Substitute.For<IAttributeFetcher>();
             fetcher.FetchAssemblyAttributes().Returns(new List<EventBusBaseAttribute>()
                 {
-                    new BusEvent(){EventType = typeof(ISnedEvent)},
-                    new EventBusPublisherAttribute(){EventType = typeof(ISnedEvent)},
-                    new EventBusCommandSenderAttribute(){ EventType = typeof(ISendCommand)},
+                    new EventBusEventAttribute(){EventType = typeof(ISnedEvent)},
+                    new EventBusCommandAttribute(){ EventType = typeof(ISendCommand)},
                     new EventBusConsumerAttribute(){EventType = typeof(IConsumeOne)},
                     new EventBusConsumerAttribute(){EventType = typeof(IConsumeTwo)},
-                    new BusEvent(){ EventType = typeof(EventFor2)}
+                    new EventBusEventAttribute(){ EventType = typeof(EventFor2)}
                 });
 
             return fetcher;

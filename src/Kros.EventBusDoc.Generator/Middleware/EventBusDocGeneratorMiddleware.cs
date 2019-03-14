@@ -1,8 +1,7 @@
-﻿using Kros.EventBusDoc.Generator.Middleware.Interfaces;
+﻿using Kros.EventBusDoc.Generator.BusentScour.Generators;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing.Template;
-using Microsoft.Extensions.Options;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,11 +11,13 @@ namespace Kros.EventBusDoc.Generator.Middleware
     {
         private readonly RequestDelegate _next;
         private readonly TemplateMatcher _requesMatcher;
+        private readonly ServiceSettings _settings;
 
-        public EventBusDocGeneratorMiddleware(RequestDelegate next, IOptions<EventBusDocOptions> options)
+        public EventBusDocGeneratorMiddleware(RequestDelegate next, EventBusDocOptions options)
         {
             _next = next;
-            _requesMatcher = new TemplateMatcher(TemplateParser.Parse(options.Value.RouteTemplate), new RouteValueDictionary());
+            _settings = options.ServiceSettings;
+            _requesMatcher = new TemplateMatcher(TemplateParser.Parse(options.RouteTemplate), new RouteValueDictionary());
         }
 
         public async Task Invoke(HttpContext context, IBusentProvider provider)
@@ -54,7 +55,7 @@ namespace Kros.EventBusDoc.Generator.Middleware
             response.StatusCode = 200;
             response.ContentType = "application/json;charset=utf-8";
 
-            await response.WriteAsync(provider.Serialize(), new UTF8Encoding(false));
+            await response.WriteAsync(provider.Serialize(_settings), new UTF8Encoding(false));
         }
     }
 }
